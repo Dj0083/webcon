@@ -1,0 +1,49 @@
+<?php
+// Include database configuration
+include 'db_config.php';
+
+// Query to fetch participant data with session details
+$query = "SELECT participants.id, participants.name, participants.email, 
+                 sessions.title AS session_title 
+          FROM participants 
+          LEFT JOIN sessions ON participants.session_id = sessions.id";
+
+$result = $conn->query($query);
+
+if (!$result) {
+    die("Query Failed: " . $conn->error);
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Participants</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional: Link to your CSS -->
+</head>
+<body>
+    <h1>Participants List</h1>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Session</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($row['id']); ?></td>
+                    <td><?php echo htmlspecialchars($row['name']); ?></td>
+                    <td><?php echo htmlspecialchars($row['email']); ?></td>
+                    <td><?php echo htmlspecialchars($row['session_title'] ?? 'Not Assigned'); ?></td>
+                </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</body>
+</html>

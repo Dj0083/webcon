@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Registration</title>
+    <style>
+        /* Inline styles for simplicity (adjust in your CSS file if needed) */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .header {
+            background-color: #007BFF;
+            text-align: center;
+            padding: 10px;
+            color: white;
+        }
+        .header img {
+            max-width: 100px;
+            margin: 10px 0;
+        }
+        .registration-form {
+            max-width: 600px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .registration-form h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .registration-form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        .registration-form input,
+        .registration-form select,
+        .registration-form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .registration-form button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .registration-form button:hover {
+            background-color: #007BFF;
+        }
+        .back-button {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-button a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-button a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Register for the Conference</h1>
+    </header>
+    
+    <main class="registration-form">
+        <h1>Registration Form</h1>
+        <form action="register.php" method="POST" enctype="multipart/form-data">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+			
+			<label for="nic">NIC Number:</label>
+            <input type="text" id="nic" name="nic" required>
+
+            <label for="category">Participant Category:</label>
+            <select id="category" name="category" required>
+                <option value="student">Student</option>
+                <option value="academic">Academic</option>
+                <option value="professional">Professional</option>
+            </select>
+			
+			<label for="country">Country:</label>
+                <select id="country" name="country" required>
+                    <option value="" disabled selected>Select your country</option>
+                    <option value="Sri Lanka">Sri Lanka</option>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <option value="UK">UK</option>
+                    <option value="Australia">Australia</option>
+                </select>
+				
+			<label>Select the sessions you want to attend:</label>
+			<label for="session1">Session 1: Sustainable Engineering Practices</label>
+            <input type="checkbox" id="session1" name="sessions[]" value="Session 1"><br>
+			<label for="session2">Session 2: Artificial Intelligence & Machine Learning</label>
+            <input type="checkbox" id="session2" name="sessions[]" value="Session 2"><br>
+			<label for="session3">Session 3: Smart Cities & Urban Development</label>
+            <input type="checkbox" id="session3" name="sessions[]" value="Session 3"><br>
+            <label for="session4">Session 4: Green Energy & Environmental Engineering</label>
+            <input type="checkbox" id="session4" name="sessions[]" value="Session 4"><br>
+            <label for="session5">Session 5: Data Science & Technology for Sustainability</label>
+            <input type="checkbox" id="session5" name="sessions[]" value="Session 5"><br><br>
+					
+			<label for="payment-file">Upload Payment File (PDF only):</label>
+            <input type="file" id="payment-file" name="payment-file" accept=".pdf" required>
+	   
+            <button type="submit">Submit</button>
+        </form>
+        
+        <div class="back-button">
+            <a href="success.html">Back to Home</a>
+        </div>
+
+        
+    
+    </main>
+</body>
+</html>
